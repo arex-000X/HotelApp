@@ -8,4 +8,8 @@ data class HotelResponce(
     var results: Results,
     @SerializedName("status")
     val status:String = ""
-)
+) {
+    override fun toString(): String {
+        return "HotelResponce(results=$results, status='$status')"
+    }
+}

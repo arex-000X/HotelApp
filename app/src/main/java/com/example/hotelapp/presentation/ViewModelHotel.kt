@@ -18,10 +18,10 @@ class ViewModelHotel:ViewModel() {
     fun getHotelList(): LiveData<List<Hotels>> {
         return getHotelListUseCase.getHotelList(repository)
     }
-    fun getHotel(): LiveData<Hotels> {
-        return getHotelUseCase.getHotel(repository)
-    }
     fun getResponce(): LiveData<HotelResponce> {
         return getHotelResponce.getHotelResponce(repository)
+    }
+    fun getHotel(): LiveData<HotelResponce>{
+        return getHotelUseCase.getHotel(repository)
     }
 }
