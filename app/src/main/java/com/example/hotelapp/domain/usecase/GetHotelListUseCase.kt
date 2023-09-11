@@ -1,7 +1,9 @@
-package com.example.hotelapp.domain
+package com.example.hotelapp.domain.usecase
 
 import androidx.lifecycle.LiveData
-import com.example.hotelapp.data.HotelRepositoryImpl
+import com.example.hotelapp.data.repository.HotelRepositoryImpl
+import com.example.hotelapp.domain.Hotels
+import com.example.hotelapp.domain.repository.HotelRepository
 
 class GetHotelListUseCase(private val repository: HotelRepository) {
 

@@ -1,12 +1,11 @@
-package com.example.hotelapp.data
+package com.example.hotelapp.data.repository
 
-import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import com.example.hotelapp.data.retrofit.ApiFactory
 import com.example.hotelapp.domain.HotelResponce
-import com.example.hotelapp.domain.HotelRepository
+import com.example.hotelapp.domain.repository.HotelRepository
 import com.example.hotelapp.domain.Hotels
-import com.example.hotelapp.domain.Results
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
 import io.reactivex.rxjava3.disposables.CompositeDisposable
 import io.reactivex.rxjava3.schedulers.Schedulers

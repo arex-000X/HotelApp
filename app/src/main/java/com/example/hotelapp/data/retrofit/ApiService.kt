@@ -1,4 +1,4 @@
-package com.example.hotelapp.data
+package com.example.hotelapp.data.retrofit
 
 
 import com.example.hotelapp.domain.HotelResponce
