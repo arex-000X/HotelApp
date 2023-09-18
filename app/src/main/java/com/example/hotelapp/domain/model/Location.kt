@@ -1,4 +1,4 @@
-package com.example.hotelapp.domain
+package com.example.hotelapp.domain.model
 
 data class Location(
     val lat:Double,

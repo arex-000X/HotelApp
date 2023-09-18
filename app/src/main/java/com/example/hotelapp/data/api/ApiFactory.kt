@@ -1,4 +1,4 @@
-package com.example.hotelapp.data.retrofit
+package com.example.hotelapp.data.api
 
 import retrofit2.Retrofit
 import retrofit2.adapter.rxjava3.RxJava3CallAdapterFactory

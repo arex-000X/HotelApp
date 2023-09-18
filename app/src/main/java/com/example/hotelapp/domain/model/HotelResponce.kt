@@ -1,4 +1,4 @@
-package com.example.hotelapp.domain
+package com.example.hotelapp.domain.model
 
 import com.google.gson.annotations.SerializedName
 
@@ -8,8 +8,4 @@ data class HotelResponce(
     var results: Results,
     @SerializedName("status")
     val status:String = ""
-) {
-    override fun toString(): String {
-        return "HotelResponce(results=$results, status='$status')"
-    }
-}
+)

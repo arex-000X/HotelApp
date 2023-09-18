@@ -1,59 +1,49 @@
 package com.example.hotelapp.data.repository
 
+import android.annotation.SuppressLint
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import com.example.hotelapp.data.retrofit.ApiFactory
-import com.example.hotelapp.domain.HotelResponce
+import com.example.hotelapp.data.api.ApiFactory
+import com.example.hotelapp.domain.model.HotelResponce
 import com.example.hotelapp.domain.repository.HotelRepository
-import com.example.hotelapp.domain.Hotels
+import com.example.hotelapp.domain.model.Hotels
+import com.example.hotelapp.domain.model.Results
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
 import io.reactivex.rxjava3.disposables.CompositeDisposable
 import io.reactivex.rxjava3.schedulers.Schedulers
 
 object HotelRepositoryImpl : HotelRepository {
 
-    private var hotelResApi: MutableLiveData<HotelResponce> = MutableLiveData()
-    private var hotelsList: MutableLiveData<List<Hotels>> = MutableLiveData()
-    private var hotels: MutableLiveData<HotelResponce> = MutableLiveData()
-    private var id: Int = 0
+    private var hotelsList = MutableLiveData<List<Hotels>>()
+    private var hotels = MutableLiveData<HotelResponce>()
     val compositedisposable = CompositeDisposable()
-    override fun getHoteResponce(): LiveData<HotelResponce> {
-        val disposable = ApiFactory
-            .apiService
-            .getHotelResponce("Moscow")
+    @SuppressLint("SuspiciousIndentation")
+    override fun getHotelList(): LiveData<List<Hotels>> {
+      var disposable = ApiFactory.apiService
+            .getHotelResponce("Estonia")
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe({
-                     hotelResApi.value = it
-                     hotelsList.value = it.results.hotels
-            },{
+                hotelsList.postValue(it.results.hotels)
+
+            }, {
 
             })
         compositedisposable.add(disposable)
-        return hotelResApi
+        return hotelsList
     }
 
-    override fun getHotel(): LiveData<HotelResponce> {
-        val disposable = ApiFactory
-            .apiService
-            .getHotelResponce(333526)
+    override fun getHotel(id:Int): LiveData<HotelResponce> {
+        var disposable = ApiFactory.apiService
+            .getHotelResponce(id)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe({
-                hotels.value = it
-
-            },{
+                hotels.postValue(it)
+            }, {
 
             })
         compositedisposable.add(disposable)
         return hotels
     }
-
-
-
-    override fun getHotelList(): LiveData<List<Hotels>> {
-        return hotelsList
-    }
-
-
 }

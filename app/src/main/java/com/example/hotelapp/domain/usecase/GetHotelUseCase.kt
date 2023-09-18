@@ -4,5 +4,5 @@ import com.example.hotelapp.data.repository.HotelRepositoryImpl
 import com.example.hotelapp.domain.repository.HotelRepository
 
 class GetHotelUseCase(private val repository: HotelRepository) {
-    fun getHotel(repository: HotelRepositoryImpl) = repository.getHotel()
+    fun getHotel(repository: HotelRepositoryImpl,id:Int) = this.repository.getHotel(id)
 }
