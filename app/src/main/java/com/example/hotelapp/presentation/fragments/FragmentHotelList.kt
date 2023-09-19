@@ -36,7 +36,7 @@ class FragmentHotelList : Fragment() {
         viewModel = ViewModelProvider(this)[ViewModelHotel::class.java]
         viewModel.getHotelList().observe(viewLifecycleOwner) {
             Log.d("HotelRepository", "getHotellist -> Data Api: ${it}")
-            adapter.hotels = it
+            adapter.submitList(it)
         }
         adapter.hotelItemClickListener = {
             viewModel.getHotel(it).observe(viewLifecycleOwner) {
